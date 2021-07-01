@@ -75,7 +75,7 @@
           // 5.将数据提交到后台
           // this.$http.post('/item/brand', this.$qs.stringify(params))
           this.$http({
-            method: this.isEdit ? 'put' : 'post',
+            method: this.isEdit ? 'put' : 'post',// 动态判断是POST还是PUT
             url: '/item/brand',
             data: this.$qs.stringify(params)
           }).then(() => {
