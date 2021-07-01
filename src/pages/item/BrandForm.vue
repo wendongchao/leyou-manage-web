@@ -14,7 +14,11 @@
       </v-flex>
       <v-flex>
         <v-upload
-          v-model="brand.image" url="/upload/image" :multiple="false" :pic-width="250" :pic-height="90"
+          v-model="brand.image"
+          url="/upload/image"
+          :multiple="false"
+          :pic-width="250"
+          :pic-height="90"
         />
       </v-flex>
     </v-layout>
@@ -47,6 +51,7 @@
           image: '',// 品牌logo
           categories: [], // 品牌所属的商品分类数组
         },
+        // 填写规则进行校验
         nameRules: [
           v => !!v || "品牌名称不能为空",
           v => v.length > 1 || "品牌名称至少2位"
@@ -59,26 +64,25 @@
     },
     methods: {
       submit() {
-        // 表单校验
+        // 1.表单校验
         if (this.$refs.myBrandForm.validate()) {
-          // 定义一个请求参数对象，通过解构表达式来获取brand中的属性
+          // 2.定义一个请求参数对象，通过解构表达式来获取brand中的属性
           const {categories, letter, ...params} = this.brand;
-          // 数据库中只要保存分类的id即可，因此我们对categories的值进行处理,只保留id，并转为字符串
+          // 3.数据库中只要保存分类的id即可，因此我们对categories的值进行处理,只保留id，并转为字符串
           params.cids = categories.map(c => c.id).join(",");
-          // 将字母都处理为大写
+          // 4.将字母都处理为大写
           params.letter = letter.toUpperCase();
-          // 将数据提交到后台
+          // 5.将数据提交到后台
           // this.$http.post('/item/brand', this.$qs.stringify(params))
           this.$http({
             method: this.isEdit ? 'put' : 'post',
             url: '/item/brand',
             data: this.$qs.stringify(params)
           }).then(() => {
-            // 关闭窗口
+            // 6.关闭窗口
             this.$emit("close");
             this.$message.success("保存成功！");
-          })
-            .catch(() => {
+          }).catch(() => {
               this.$message.error("保存失败！");
             });
         }
