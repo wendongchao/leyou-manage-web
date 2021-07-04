@@ -17,7 +17,7 @@
           <v-card class="elevation-0" v-show="currentNode.id">
               <v-card-title v-if="!currentNode.path">
                 请先选择一个分类
-              </v-card-title>         
+              </v-card-title>
             <v-breadcrumbs dense v-else>
                 <v-icon slot="divider">chevron_right</v-icon>
                 <v-breadcrumbs-item
@@ -45,9 +45,9 @@ export default {
   name: "v-spec",
   data() {
     return {
-      currentNode: {}, // 当前被选中的商品分类节点
-      group:{}, // 被选中的分组
-      showGroup:true, // 是否展示分组
+        currentNode: {}, // 当前被选中的商品分类节点
+        group:{}, // 被选中的分组
+        showGroup:true, // 是否展示分组
     };
   },
   methods: {

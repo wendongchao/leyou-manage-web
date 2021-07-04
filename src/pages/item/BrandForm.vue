@@ -32,7 +32,7 @@
 
 <script>
   export default {
-    name: "brand-form",
+    name: "my-brand-form",
     props: {
       oldBrand: {
         type: Object
