@@ -79,7 +79,7 @@
             url: '/item/brand',
             data: this.$qs.stringify(params)
           }).then(() => {
-            // 6.关闭窗口
+            // 6.关闭窗口，子类调用父类关闭窗口
             this.$emit("close");
             this.$message.success("保存成功！");
           }).catch(() => {

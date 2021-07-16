@@ -77,7 +77,7 @@
         ],
         show: false,// 控制对话框的显示
         oldBrand: {}, // 即将被编辑的品牌数据
-        isEdit: false, // 是否是编辑
+        isEdit: false, // 是否是编辑，记录新增修改
       }
     },
     mounted() { // 渲染后执行
@@ -121,7 +121,7 @@
         this.isEdit = false;
         // 控制弹窗可见：
         this.show = true;
-        // 把oldBrand变为null
+        // 把oldBrand变为null，防止数据干扰
         this.oldBrand = null;
       },
       editBrand(oldBrand){
