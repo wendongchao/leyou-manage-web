@@ -1,5 +1,6 @@
 <template>
   <v-card>
+    <!--卡片头-->
     <v-card-title>
       <v-btn color="primary" @click="addBrand">新增品牌</v-btn>
       <!--搜索框，与search属性关联-->
@@ -8,15 +9,19 @@
       <v-text-field label="输入关键字搜索" v-model.lazy="search" append-icon="search" hide-details/>
       </v-flex>
     </v-card-title>
+    <!--分隔线-->
     <v-divider/>
+    <!--数据表格-->
     <v-data-table
       :headers="headers"
       :items="brands"
+      :search="search"
       :pagination.sync="pagination"
       :total-items="totalBrands"
       :loading="loading"
       class="elevation-1"
     >
+      <!--数据渲染模板-->
       <template slot="items" slot-scope="props">
         <td class="text-xs-center">{{ props.item.id }}</td>
         <td class="text-xs-center">{{ props.item.name }}</td>
@@ -68,7 +73,7 @@
         brands: [], // 当前页品牌数据
         loading: true, // 是否在加载中
         pagination: {}, // 分页信息
-        headers: [
+        headers: [ // 列标题头
           {text: 'id', align: 'center', value: 'id'},
           {text: '名称', align: 'center', sortable: false, value: 'name'},
           {text: 'LOGO', align: 'center', sortable: false, value: 'image'},
